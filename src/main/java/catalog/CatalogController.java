@@ -30,7 +30,7 @@ public class CatalogController {
     @RequestMapping(value = "/items", method = RequestMethod.GET)
     @ResponseBody
     Iterable<Inventory> getInventory() {
-        return itemsRepo.findAll();
+       return itemsRepo.findAll();
     }
 
     /**
@@ -38,11 +38,11 @@ public class CatalogController {
      */
     @RequestMapping(value = "/items/{id}", method = RequestMethod.GET)
     ResponseEntity<?> getById(@PathVariable long id) {
-                if (!itemsRepo.exists(id)) {
-                        return ResponseEntity.notFound().build();
-                }
-
-                return ResponseEntity.ok(itemsRepo.findOne(id));
+	    if (!itemsRepo.exists(id)) {
+	            return ResponseEntity.notFound().build();
+	    }
+	
+	    return ResponseEntity.ok(itemsRepo.findOne(id));
     }
 
 }
